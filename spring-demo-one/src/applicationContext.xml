@@ -16,6 +16,9 @@
 	<bean id="myTrackCoach" class="com.anaco.springdemo.TrackCoach">	
 		<!-- set up property injection-->
 		<property name="fortuneService" ref="myFortune"/>
+		<!-- inject literal values-->
+		<property name="emailAdress" value="ana@oi"/>
+		<property name="teams" value="opas"/>
 	</bean>
 </beans>
 
