@@ -38,3 +38,26 @@ Spring container is a application Context
 		<property name="emailAdress" value="${foo.email}" />
 		<property name="teams" value="${foo.team}" />
 ````
+
+## Anotations
+
+````xml
+	<!-- add entry to enable project scanning -->
+	<context:component-scan base-package="com.anaco.springdemoannotations"/>
+````
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.stereotype.Component;
+
+@Component("thatSillyCoach")
+public class TennisCoach implements Coach {
+
+	@Override
+	public String getDailyWorkout() {
+		return "Practice tennis";
+	}
+
+}
+
+````
