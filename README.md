@@ -4,10 +4,23 @@
 2. Create Spring Container
 3. Retrieve Beans from Spring Container
 
+## Scopes
+
+Singleton (default)
+
+Once loaded into memory all classes will shared the bean reference
+
+Prototype
+
+Create a new instace each request for bean
+
 ## XML
 Spring container is a application Context
 ````xml
-   <!-- Define your beans here -->
+	<!-- load the properties file: sport.properties -->
+	<context:property-placeholder location="classpath:sport.properties"/>
+	
+    <!-- Define your beans here -->
     <bean id="myFortune" class="com.anaco.springdemo.HappyFortuneService">	</bean>
     <bean id="myCoach" class="com.anaco.springdemo.BaseballCoach">
 		<!-- set up constructor injection-->
@@ -17,7 +30,9 @@ Spring container is a application Context
 		<!-- set up property injection-->
 		<property name="fortuneService" ref="myFortune"/>
 		<!-- inject literal values-->
-		<property name="emailAdress" value="ana@oi"/>
-		<property name="teams" value="opas"/>
-	</bean>
+		<!--<property name="emailAdress" value="ana@oi"/>-->
+		<!--<property name="teams" value="opas"/>-->
+		
+		<property name="emailAdress" value="${foo.email}" />
+		<property name="teams" value="${foo.team}" />
 ````
