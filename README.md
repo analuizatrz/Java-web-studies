@@ -7,6 +7,17 @@
 ## XML
 Spring container is a application Context
 ````xml
-<beans>
-
+   <!-- Define your beans here -->
+    <bean id="myFortune" class="com.anaco.springdemo.HappyFortuneService">	</bean>
+    <bean id="myCoach" class="com.anaco.springdemo.BaseballCoach">
+		<!-- set up constructor injection-->
+		<constructor-arg ref="myFortune"/>
+	</bean>
+	<bean id="myTrackCoach" class="com.anaco.springdemo.TrackCoach">	
+		<!-- set up property injection-->
+		<property name="fortuneService" ref="myFortune"/>
+		<!-- inject literal values-->
+		<property name="emailAdress" value="ana@oi"/>
+		<property name="teams" value="opas"/>
+	</bean>
 ````
