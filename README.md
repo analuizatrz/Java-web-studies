@@ -7,10 +7,12 @@
 ## Scopes
 
 Singleton (default)
+	init and destroy, manages the bean so it can be handed to other services
 
 Once loaded into memory all classes will shared the bean reference
 
 Prototype
+	init only, and sended to requestors to manage
 
 Create a new instace each request for bean
 

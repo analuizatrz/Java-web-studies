@@ -11,4 +11,13 @@ public class LifeCoach implements Coach {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	// add an init method
+	public void doMyStartupStuff() {
+		System.out.println("LifeCoach: inside method doMyStartupStuff");
+	}
+	
+	// add a destroy method
+	public void doMyCleanupStuffYoYo() {
+		System.out.println("LifeCoach: inside method doMyCleanupStuffYoYo");		
+	}
 }
