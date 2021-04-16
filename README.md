@@ -114,7 +114,7 @@ public class AnnotationDemoApp {
 ````
 
 ### Setter injection
-The Component annotation tells spring that the class is a bean, and could be get from the context/container
+
 ````java
 package com.anaco.springdemoannotations;
 
@@ -137,6 +137,32 @@ public class TennisCoach implements Coach {
 	public void CrasaudiUSHADaksdjnakd(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
 	}*/
+
+	@Override
+	public String getDailyWorkout() {
+		return "Practice tennis";
+	}
+
+	@Override
+	public String getDailyFortune() {
+		return fortuneService.getFortune();
+	}
+
+}
+````
+
+### Field injection
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("thatSillyCoach")
+public class TennisCoach implements Coach {
+	// field injection, through reflection, all behind the scenes
+	@Autowired
+	private FortuneService fortuneService;
 
 	@Override
 	public String getDailyWorkout() {
