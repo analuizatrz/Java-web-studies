@@ -5,11 +5,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class AnnotationDemoApp {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// read sprint config file
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-		var oi = context.getBean("thatSillyCoach", TennisCoach.class);
-		System.out.println(oi.getDailyWorkout());
+		
+		// get the bean from spring container
+		var sillyCoach = context.getBean("thatSillyCoach", TennisCoach.class);
+		
+		// call a method on the bean
+		System.out.println(sillyCoach.getDailyWorkout());
+		
+		// call the method to get daily fortune
+		System.out.println(sillyCoach.getDailyFortune());
+		
 		context.close();
 	}
-
 }

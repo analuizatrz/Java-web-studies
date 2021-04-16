@@ -40,7 +40,11 @@ Spring container is a application Context
 ````
 
 ## Anotations
+Component id = "the silly coach"
+constructor, setter, field injections.
 
+### Constructor injection
+The Component annotation tells spring that the class is a bean, and could be get from the context/container
 ````xml
 	<!-- add entry to enable project scanning -->
 	<context:component-scan base-package="com.anaco.springdemoannotations"/>
@@ -50,7 +54,7 @@ package com.anaco.springdemoannotations;
 
 import org.springframework.stereotype.Component;
 
-@Component("thatSillyCoach")
+@Component("thatSillyCoach") // or @Component, so de default id is the class name slithery, tennisCoach
 public class TennisCoach implements Coach {
 
 	@Override
@@ -59,5 +63,13 @@ public class TennisCoach implements Coach {
 	}
 
 }
+
+````
+````java
+	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+	//var oi = context.getBean("tennisCoach", TennisCoach.class);
+	var oi = context.getBean("thatSillyCoach", TennisCoach.class);
+	System.out.println(oi.getDailyWorkout());
+	context.close();
 
 ````
