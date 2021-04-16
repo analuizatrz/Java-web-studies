@@ -52,24 +52,101 @@ The Component annotation tells spring that the class is a bean, and could be get
 ````java
 package com.anaco.springdemoannotations;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component("thatSillyCoach") // or @Component, so de default id is the class name slithery, tennisCoach
+//@Component // uses id as tennisCoach
 public class TennisCoach implements Coach {
+
+	FortuneService fortuneService;
+	// the constructor injection
+	@Autowired
+	public TennisCoach(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+	@Override
+	public String getDailyWorkout() {
+		return "Practice tennis";
+	}
+
+	@Override
+	public String getDailyFortune() {
+		return fortuneService.getFortune();
+	}
+}
+
+````
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class HappyFortuneService implements FortuneService {
+
+	@Override
+	public String getFortune() {
+		return "Today is your lucky day";
+	}
+}
+
+````
+````java
+public class AnnotationDemoApp {
+
+	public static void main(String[] args) {
+		// read sprint config file
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		// get the bean from spring container
+		var sillyCoach = context.getBean("thatSillyCoach", TennisCoach.class);
+		
+		// call a method on the bean
+		System.out.println(sillyCoach.getDailyWorkout());
+		
+		// call the method to get daily fortune
+		System.out.println(sillyCoach.getDailyFortune());
+		
+		context.close();
+	}
+}
+````
+
+### Setter injection
+The Component annotation tells spring that the class is a bean, and could be get from the context/container
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("thatSillyCoach")
+//@Component // uses id as tennisCoach
+public class TennisCoach implements Coach {
+
+	FortuneService fortuneService;
+	
+	// the setter injection
+	@Autowired
+	public void setFortuneService(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}
+	/*
+	@Autowired // With other names works too
+	public void CrasaudiUSHADaksdjnakd(FortuneService fortuneService) {
+		this.fortuneService = fortuneService;
+	}*/
 
 	@Override
 	public String getDailyWorkout() {
 		return "Practice tennis";
 	}
 
+	@Override
+	public String getDailyFortune() {
+		return fortuneService.getFortune();
+	}
+
 }
-
-````
-````java
-	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-	//var oi = context.getBean("tennisCoach", TennisCoach.class);
-	var oi = context.getBean("thatSillyCoach", TennisCoach.class);
-	System.out.println(oi.getDailyWorkout());
-	context.close();
-
 ````
