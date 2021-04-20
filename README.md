@@ -281,6 +281,7 @@ public class TennisCoach implements Coach {
 ````
 
 ## Annotation only (no XML)
+Por meio de scan de projeto. `@Configuration`, `@ComponentScan()` e `new AnnotationConfigApplicationContext()`
 ````java
 package com.anaco.springdemoannotations;
 
@@ -320,4 +321,58 @@ public class JavaConfigDemoApp {
 	}
 }
 
+````
+
+## No config scans
+
+No annotations in the services ! =D
+
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SportConfig {
+	// define bean for sad fortune service
+	@Bean
+	public FortuneService sadFortuneService() {
+		return new SadFortuneService();
+	}
+	// define bean for swim coach
+	@Bean
+	public Coach swimCoach() {
+		return new SwimCoach(sadFortuneService());
+	}
+
+}
+
+````
+
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class SwimJavaConfigDemoApp {
+
+	public static void main(String[] args) {
+		// read sprint config file
+		var context = new AnnotationConfigApplicationContext(SportConfig.class);
+		
+		// get the bean from spring container
+		var sillyCoach = context.getBean("swimCoach", Coach.class);
+		
+		// call a method on the bean
+		System.out.println(sillyCoach.getDailyWorkout());
+		
+		// call the method to get daily fortune
+		System.out.println(sillyCoach.getDailyFortune());
+		
+		context.close();
+	}
+}
 ````
