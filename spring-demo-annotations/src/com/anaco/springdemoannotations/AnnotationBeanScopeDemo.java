@@ -15,8 +15,5 @@ public class AnnotationBeanScopeDemo {
 		System.out.println("Memory location for coach"+ coach);
 		System.out.println("Memory location for alphacoach"+ alphaCoach);
 		System.out.println(result);
-		
-
 	}
-
 }

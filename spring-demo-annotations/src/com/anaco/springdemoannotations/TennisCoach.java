@@ -2,7 +2,6 @@ package com.anaco.springdemoannotations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component("thatSillyCoach")
@@ -23,9 +22,13 @@ public class TennisCoach implements Coach {
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
-	@PostConstruct
-	public void DoMyStartUpStuff() {
-		System.out.println("Inside do my start up stuff");
-	}
+//	@PostConstruct
+//	public void DoMyStartUpStuff() {
+//		System.out.println("Inside do my start up stuff");
+//	}
+//	@PreDestroy
+//	public void DoMyCleanupStuff() {
+//		System.out.println("Inside do my start up stuff");
+//	}
 
 }

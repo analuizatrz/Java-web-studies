@@ -4,6 +4,12 @@
 2. Create Spring Container
 3. Retrieve Beans from Spring Container
 
+there are 3 ways:
+
+1. Full XML config
+2. XML component scan (one xml to register the project to be scanned)
+3. Java configuration class
+
 ## Scopes
 
 Singleton (default)
@@ -272,4 +278,46 @@ public class TennisCoach implements Coach {
 	}
 
 }
+````
+
+## Annotation only (no XML)
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan("com.anaco.springdemoannotations")
+public class SportConfig {
+
+}
+
+````
+
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class JavaConfigDemoApp {
+
+	public static void main(String[] args) {
+		// read sprint config file
+		//ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		var context = new AnnotationConfigApplicationContext(SportConfig.class);
+		// get the bean from spring container
+		var sillyCoach = context.getBean("thatSillyCoach", TennisCoach.class);
+		
+		// call a method on the bean
+		System.out.println(sillyCoach.getDailyWorkout());
+		
+		// call the method to get daily fortune
+		System.out.println(sillyCoach.getDailyFortune());
+		
+		context.close();
+	}
+}
+
 ````
