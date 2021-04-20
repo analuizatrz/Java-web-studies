@@ -176,3 +176,100 @@ public class TennisCoach implements Coach {
 
 }
 ````
+
+### Qualifier 
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("thatSillyCoach")
+public class TennisCoach implements Coach {
+	// field injection, through reflection, all behind the scenes
+	@Autowired
+	@Qualifier("happyFortuneService")// with the id of the specific bean
+	private FortuneService fortuneService;
+
+	@Override
+	public String getDailyWorkout() {
+		return "Practice tennis";
+	}
+
+	@Override
+	public String getDailyFortune() {
+		return fortuneService.getFortune();
+	}
+
+}
+````
+
+### Scopes
+`@Scope("prototype")` ou `@Scope("singleton")` (default)
+
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("thatSillyCoach")
+@Scope("prototype") // defines the scope, which can be singleton or prototype
+public class TennisCoach implements Coach {
+	// field injection, through reflection, all behind the scenes
+	@Autowired
+	private FortuneService fortuneService;
+
+	@Override
+	public String getDailyWorkout() {
+		return "Practice tennis";
+	}
+
+	@Override
+	public String getDailyFortune() {
+		return fortuneService.getFortune();
+	}
+
+}
+````
+
+### Life cycle
+@PreDestroy, @PosConstruct
+
+````java
+package com.anaco.springdemoannotations;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component("thatSillyCoach")
+//@Scope("prototype")
+//@Component // uses id as tennisCoach
+public class TennisCoach implements Coach {
+	
+	@Autowired
+	@Qualifier("fileFortuneService")
+	private FortuneService fortuneService;
+
+	@Override
+	public String getDailyWorkout() {
+		return "Practice tennis";
+	}
+
+	@Override
+	public String getDailyFortune() {
+		return fortuneService.getFortune();
+	}
+	@PostConstruct
+	public void DoMyStartUpStuff() {
+		System.out.println("Inside do my start up stuff");
+	}
+	@PreDestroy
+	public void DoMyCleanupStuff() {
+		System.out.println("Inside do my start up stuff");
+	}
+
+}
+````
