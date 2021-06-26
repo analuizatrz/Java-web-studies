@@ -336,7 +336,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SportConfig {
-	// define bean for sad fortune service
+	// define bean for sad fortune service. the name of the function is the name of the bean
 	@Bean
 	public FortuneService sadFortuneService() {
 		return new SadFortuneService();
@@ -362,7 +362,7 @@ public class SwimJavaConfigDemoApp {
 	public static void main(String[] args) {
 		// read sprint config file
 		var context = new AnnotationConfigApplicationContext(SportConfig.class);
-		
+
 		// get the bean from spring container
 		var sillyCoach = context.getBean("swimCoach", Coach.class);
 		
