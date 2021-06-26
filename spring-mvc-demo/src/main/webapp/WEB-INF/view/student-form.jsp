@@ -11,9 +11,7 @@
 		
 		Country:
 		<form:select path="country">
-			<form:option value="Brazil" label="Brazil"/>
-			<form:option value="Germany" label="Germany"/>
-			<form:option value="France" label="France"/>
+			<form:options items="${student.countryOptions}" />
 		</form:select>
 		<input type="submit" value="submit"/>
 	</form:form>
