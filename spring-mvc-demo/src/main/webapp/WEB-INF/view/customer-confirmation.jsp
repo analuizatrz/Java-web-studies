@@ -5,7 +5,7 @@
 	<title>Customer Confirmation</title>
 	</head>
 	<body>
-		The customer  is confirmed: ${student.firstName} ${student.lastName}
+		The customer  is confirmed: ${customer.firstName} ${customer.lastName}
 
 	</body>
 	
