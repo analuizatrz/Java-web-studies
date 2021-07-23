@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class TestJdbc {
 	public static void main(String[] args) {
-		var url = "jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false&characterEncoding=latin1";
+		var url = "jdbc:mysql://localhost:3306/hb_student_tracker?useSSL=false";
 		var username = "hbstudent";
 		var password = "hbstudent";
 
