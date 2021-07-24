@@ -17,9 +17,10 @@ public class GetInstructorByDetail {
 								.addAnnotatedClass(InstructorDetail.class)
 								.buildSessionFactory();
 		
+		Session session = sessionFactory.getCurrentSession();
+		
 		try {
 			int id = 2;
-			Session session = sessionFactory.getCurrentSession();
 			System.out.println("Deleting instructor");
 			session.beginTransaction();
 			
@@ -28,10 +29,14 @@ public class GetInstructorByDetail {
 			System.out.println("Found instructor: "+instructorDetail.getInstructor());
 			
 
-			session.getTransaction().commit();
 			System.out.println("Done");
 		} catch (Exception e) {
+			e.printStackTrace();
 			// TODO: handle exception
+		} finally {
+			session.getTransaction().commit();
+			sessionFactory.close();
+			
 		}
 	}
 }
