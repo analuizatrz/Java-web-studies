@@ -394,3 +394,22 @@ public class SwimJavaConfigDemoApp {
 ## Add hibernate validation
 
 https://sourceforge.net/projects/hibernate/
+
+# Maven
+
+dependency manager. It uses a remote repository with jars and checks for the dependencies of the project.
+When needed, the required jars are downloaded, and used. They are added to the class path by maven too.
+Maven also provides a default project organization wich makes it easier to checkout new projects.
+
+## POM
+
+the pom file is a configuration file. It stands for Project Object Model
+project metadata, list of dependencies and plugins.
+
+```xml
+
+```
+
+## GAV
+
+Group Artifact Version
