@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.luv2code.hibernate.demo.entity.Student;
 
-public class CreateStudentDemo {
+public class ReadStudentDemo {
 	public static void main(String[] args) {
 		System.out.println("começando");
 		SessionFactory sessionFactory = new Configuration()
@@ -18,13 +18,22 @@ public class CreateStudentDemo {
 		Session session = sessionFactory.getCurrentSession();
 		try {
 			System.out.println("Creating new student");
-			Student student = new Student("Hermione", "Granger", "hermione@email.com");
-			Student student2 = new Student("Harry", "Potter", "harry@email.com");
+			Student student = new Student("Luna", "Lovegood", "luna@email.com");
 			session.beginTransaction();
 			session.save(student);
-			session.save(student2);
 			session.getTransaction().commit();
+			System.out.println("Student saved ! "+ student.getId());
+			
+			
+			session = sessionFactory.getCurrentSession();
+			session.beginTransaction();
+			System.out.println("Getting student ! "+ student.getId());
+			Student readedStudent = session.get(Student.class, student.getId());
+			System.out.println("Student: "+ readedStudent.toString());
+			session.getTransaction().commit();
+			
 			System.out.println("Done");
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
