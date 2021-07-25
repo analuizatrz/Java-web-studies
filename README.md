@@ -395,6 +395,27 @@ public class SwimJavaConfigDemoApp {
 
 https://sourceforge.net/projects/hibernate/
 
+##
+
+When delete a instructor, delete a instructorDetail
+
+```
+@OneToOne(mappedBy="detail", cascade = CascadeType.ALL)
+	private Instructor instructor;
+```
+
+If delete a course, do not delete a student
+If delete a student, do not delete a course
+
+```
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	@JoinTable(name = "course_student",
+				joinColumns = @JoinColumn(name = "student_id"),
+				inverseJoinColumns = @JoinColumn(name="course_id"))
+	private List<Course> courses;
+```
+
 # Maven
 
 dependency manager. It uses a remote repository with jars and checks for the dependencies of the project.

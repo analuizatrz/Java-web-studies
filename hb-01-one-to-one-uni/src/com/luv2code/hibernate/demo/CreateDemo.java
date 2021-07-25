@@ -25,7 +25,8 @@ public class CreateDemo {
 			InstructorDetail detail = new InstructorDetail("luv2code", "Luv 2 code !!");
 			
 			instructor.setDetail(detail);
-			
+			Student harry = new Student("Harry", "Potter", "harry@email.com");
+			Student hermione = new Student("Hermione", "Granger", "hermione@email.com");
 			
 			session.beginTransaction();
 

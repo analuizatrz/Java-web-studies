@@ -22,7 +22,7 @@ public class InstructorDetail {
 	
 	@Column(name="hobby")
 	private String hobby;
-	
+	// when deleting a instructor, the detail is deleted too
 	@OneToOne(mappedBy="detail", cascade = CascadeType.ALL)
 	private Instructor instructor;
 	
