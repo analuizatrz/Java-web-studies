@@ -400,7 +400,7 @@ https://sourceforge.net/projects/hibernate/
 When delete a instructor, delete a instructorDetail
 
 ```
-@OneToOne(mappedBy="detail", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="detail", cascade = CascadeType.ALL)
 	private Instructor instructor;
 ```
 
