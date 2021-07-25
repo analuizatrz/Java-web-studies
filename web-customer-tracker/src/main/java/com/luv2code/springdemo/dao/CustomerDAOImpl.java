@@ -1,4 +1,4 @@
-package code.luv2code.springdemo.dao;
+package com.luv2code.springdemo.dao;
 
 import java.util.List;
 
@@ -12,18 +12,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.luv2code.springdemo.entity.Customer;
 
 @Repository
-public class CustomerDAOImpl implements CustomerDAO{
-
+public class CustomerDAOImpl implements CustomerDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+			
 	@Override
 	@Transactional
 	public List<Customer> getCustomers() {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Query<Customer> query = currentSession.createQuery("from Customer", Customer.class);
 		List<Customer> customers = query.getResultList();
-		
 		return customers;
 	}
 
