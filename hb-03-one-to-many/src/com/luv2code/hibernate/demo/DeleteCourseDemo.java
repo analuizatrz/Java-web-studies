@@ -7,9 +7,8 @@ import org.hibernate.cfg.Configuration;
 import com.luv2code.hibernate.demo.entity.Course;
 import com.luv2code.hibernate.demo.entity.Instructor;
 import com.luv2code.hibernate.demo.entity.InstructorDetail;
-import com.luv2code.hibernate.demo.entity.Student;
 
-public class DeleteInstructorDetailDemo {
+public class DeleteCourseDemo {
 	public static void main(String[] args) {
 		System.out.println("começando");
 		SessionFactory sessionFactory = new Configuration()
@@ -19,23 +18,24 @@ public class DeleteInstructorDetailDemo {
 								.addAnnotatedClass(Course.class)
 								.buildSessionFactory();
 		
+		Session session = sessionFactory.getCurrentSession();
 		try {
-			int id = 10;
-			Session session = sessionFactory.getCurrentSession();
-			
-			System.out.println("Deleting course");
+			System.out.println("Creating instructor");
+			int id = 1;
 			session.beginTransaction();
 			
-			Course course = session.get(Course.class, id);
-			System.out.println("Found course: "+course);
-			if(course != null) {
-				session.delete(course);
-			}
+			Instructor instructor = session.get(Instructor.class, id);
+			System.out.println(instructor);
+			
+			System.out.println(instructor.getCourses());
 
-			session.getTransaction().commit();
 			System.out.println("Done");
 		} catch (Exception e) {
 			// TODO: handle exception
+		} finally {
+			session.getTransaction().commit();
+			sessionFactory.close();
+			
 		}
 	}
 }
