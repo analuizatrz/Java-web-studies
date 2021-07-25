@@ -18,6 +18,9 @@ public class Review {
 	@Column(name="comment")
 	private String comment;
 	
+	public Review() {
+
+	}
 	public Review(String comment) {
 		super();
 		this.comment = comment;
