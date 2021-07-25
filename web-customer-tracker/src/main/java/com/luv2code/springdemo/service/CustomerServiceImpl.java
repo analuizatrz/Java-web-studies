@@ -24,7 +24,10 @@ public class CustomerServiceImpl implements CustomerService {
 	@Transactional
 	public void saveCustomer(Customer customer) {
 		customerDAO.saveCustomer(customer);
-		
 	}
-
+	@Override
+	@Transactional
+	public Customer get(int id) {
+		return customerDAO.get(id);
+	}
 }
