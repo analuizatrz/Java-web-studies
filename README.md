@@ -1,6 +1,6 @@
 # Spring development Process
 
-1. Condigure Spring Beans
+1. Configure Spring Beans
 2. Create Spring Container
 3. Retrieve Beans from Spring Container
 
