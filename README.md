@@ -399,7 +399,7 @@ https://sourceforge.net/projects/hibernate/
 
 When delete a instructor, delete a instructorDetail
 
-```
+```java
 	@OneToOne(mappedBy="detail", cascade = CascadeType.ALL)
 	private Instructor instructor;
 ```
@@ -407,7 +407,7 @@ When delete a instructor, delete a instructorDetail
 If delete a course, do not delete a student
 If delete a student, do not delete a course
 
-```
+```java
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
 	@JoinTable(name = "course_student",
@@ -415,6 +415,13 @@ If delete a student, do not delete a course
 				inverseJoinColumns = @JoinColumn(name="course_id"))
 	private List<Course> courses;
 ```
+
+# AOP
+
+Aspect: module of code for a cross cutting concern (logging, security)
+Advice: What action is taken and when should be applied
+Join Point: When to apply code during program execution
+PointCut: A predicate expression for where advice should be applied
 
 # Maven
 
