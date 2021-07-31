@@ -423,6 +423,11 @@ Advice: What action is taken and when should be applied
 Join Point: When to apply code during program execution
 PointCut: A predicate expression for where advice should be applied
 
+Parameter pattern wildcards
+
+-() - method with no arguments
+- (*) - method with one argument of any type
+- (..) method with 0 or more arguments of any type 
 # Maven
 
 dependency manager. It uses a remote repository with jars and checks for the dependencies of the project.
