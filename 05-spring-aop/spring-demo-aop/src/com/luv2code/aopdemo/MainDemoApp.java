@@ -14,15 +14,19 @@ public class MainDemoApp {
 		AccountDAO daccountDAO = context.getBean("accountDAO", AccountDAO.class);
 		
 		daccountDAO.addAccount();
+		daccountDAO.addAccount(new Account(), true);
 
 		MembershipDAO membershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 		
 		membershipDAO.addAccount();
 		membershipDAO.addSillyMember();
+		membershipDAO.addBoolean();
+		membershipDAO.goToSleep();
 		
 		System.out.println("\nlet's call it again!\n");
 		
 		daccountDAO.addAccount();
+		daccountDAO.doWork();
 				
 		context.close();
 	}

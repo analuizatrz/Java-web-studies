@@ -15,4 +15,15 @@ public class MembershipDAO {
 		System.out.println(getClass() + ": Silly Silly Silly member added");
 		
 	}
+	public boolean addBoolean() {
+		
+		System.out.println(getClass() + ": boolean return");
+		return true;
+		
+	}
+	public void goToSleep() {
+		
+		System.out.println(getClass() + ": goToSleep()");
+		
+	}
 }
