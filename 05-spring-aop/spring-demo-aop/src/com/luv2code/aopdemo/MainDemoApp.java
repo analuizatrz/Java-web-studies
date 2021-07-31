@@ -18,6 +18,7 @@ public class MainDemoApp {
 		MembershipDAO membershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 		
 		membershipDAO.addAccount();
+		membershipDAO.addSillyMember();
 		
 		System.out.println("\nlet's call it again!\n");
 		

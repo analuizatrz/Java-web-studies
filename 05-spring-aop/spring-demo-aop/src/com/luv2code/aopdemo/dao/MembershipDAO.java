@@ -10,4 +10,9 @@ public class MembershipDAO {
 		System.out.println(getClass() + ": DOING STUFF: ADDING A MEMBERSHIP ACCOUNT");
 		
 	}
+	public void addSillyMember() {
+		
+		System.out.println(getClass() + ": Silly Silly Silly member added");
+		
+	}
 }
