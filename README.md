@@ -430,7 +430,7 @@ Parameter pattern wildcards
 - (..) method with 0 or more arguments of any type 
 # Maven
 
-dependency manager. It uses a remote repository with jars and checks for the dependencies of the project.
+Dependency manager. It uses a remote repository with jars and checks for the dependencies of the project.
 When needed, the required jars are downloaded, and used. They are added to the class path by maven too.
 Maven also provides a default project organization wich makes it easier to checkout new projects.
 
@@ -446,3 +446,42 @@ project metadata, list of dependencies and plugins.
 ## GAV
 
 Group Artifact Version
+
+
+## Security
+
+User and roles. when using database, authorites. Example of security configuration
+
+````java
+@Configuration
+@EnableWebSecurity
+public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
+	@Autowired
+	private DataSource securityDataSource;
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(securityDataSource);
+	}
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+
+		http.authorizeRequests()
+			.antMatchers("/").hasRole("EMPLOYEE")
+			.antMatchers("/leaders/**").hasRole("MANAGER")
+			.antMatchers("/systems/**").hasRole("ADMIN")
+			.and()
+			.formLogin()
+				.loginPage("/showMyLoginPage")
+				.loginProcessingUrl("/authenticateTheUser")
+				.permitAll()
+			.and()
+				.logout()
+				.permitAll()
+			.and()
+				.exceptionHandling().accessDeniedPage("/access-denied");
+		
+	}
+}
+
+
+```
