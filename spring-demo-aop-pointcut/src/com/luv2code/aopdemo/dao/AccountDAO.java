@@ -9,14 +9,6 @@ public class AccountDAO {
 	private String name;
 	private String serviceCode;
 	
-	public String getOi() {
-		return oi;
-	}
-
-	public void setOi(String oi) {
-		this.oi = oi;
-	}
-
 	public void addAccount() {
 		System.out.println(getClass()+" doing my db work");
 	}
