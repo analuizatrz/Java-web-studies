@@ -448,7 +448,7 @@ project metadata, list of dependencies and plugins.
 Group Artifact Version
 
 
-## Security
+# Security
 
 User and roles. when using database, authorites. Example of security configuration
 
@@ -484,4 +484,8 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
 
-```
+````
+
+## Rest API
+
+Jackson "Newton soft" do Java
