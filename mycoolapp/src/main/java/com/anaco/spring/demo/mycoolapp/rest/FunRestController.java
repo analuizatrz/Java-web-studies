@@ -15,5 +15,9 @@ public class FunRestController {
 	public String sayHello() {
 		return "Hello World! Time on server is " + LocalDateTime.now();
 	}
+	@GetMapping("/test")
+	public String test() {
+		return "testingreload ";
+	}
 	
 }

@@ -489,3 +489,26 @@ public class DemoSecurityConfig extends WebSecurityConfigurerAdapter {
 ## Rest API
 
 Jackson "Newton soft" do Java
+
+
+# Spring boot
+Spring boot makes it easy to create java web apps
+
+- it solves the problem of incompatible versions of libs
+- it uses libs such as jpa, hibernate, security and etc...
+- it does not replace, it was created over other libs
+- it has a self contained server, so to run spring boot apps we run the project as application
+
+to generate a new project https://start.spring.io/
+
+For the DI to work the packages must be contained in the root package, where @SpringBootApplication is.
+
+adding hot reload
+```xml
+		<!-- ADD SUPPORT FOR AUTOMATIC RELOADING -->
+				<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+```
