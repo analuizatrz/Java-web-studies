@@ -10,6 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class FunRestController {
 		
 	// expose "/" that return "Hello World"
+	@Value("${coach.name}")
+	private String coachName;
+	
+	@Value("${team.name}")
+	private String teamName;
+	
+	@GetMapping("/teaminfo")
+	public String getTeamInfo() {
+		return "Coach "+ coachName + " team: "+ teamName; 
+	}
 	
 	@GetMapping("/")
 	public String sayHello() {
