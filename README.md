@@ -512,3 +512,20 @@ adding hot reload
 		</dependency>
 
 ```
+
+## Spring boot actuator
+
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+```properties
+management.endpoint.web.exposure.include=health,info
+info.app.name=Aasas
+info.app.description=Crazy```
+
+http://localhost:8181/actuator/health
+
+http://localhost:8181/actuator/info
