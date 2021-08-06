@@ -524,8 +524,20 @@ adding hot reload
 ```properties
 management.endpoint.web.exposure.include=health,info
 info.app.name=Aasas
-info.app.description=Crazy```
+info.app.description=Crazy
+```
 
 http://localhost:8181/actuator/health
 
 http://localhost:8181/actuator/info
+
+## Spring boot run 
+
+from cli
+
+```sh
+java -jar
+mvnw spring-boot:run
+```
+
+mvnw is the maven wrapper.
