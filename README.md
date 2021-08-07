@@ -541,3 +541,21 @@ mvnw spring-boot:run
 ```
 
 mvnw is the maven wrapper.
+
+## DAO and repositories
+
+Ways of connecting to database:
+- hibernate (session)
+- jpa (entityManager)
+- *spring data jpa* (generate automatically, no need to implement EmployeeDAO)
+
+
+```java
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+
+}
+```
+
+like magic crud operations are generated. Eliminate boilerplate code
+
+- *spring data rest* (generate automatically, no need to implement EmployeeDAO)

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.cruddemo.dao.EmployeeDAO;
 import com.example.cruddemo.entity.Employee;
 import com.example.cruddemo.service.EmployeeService;
 
@@ -36,7 +35,7 @@ public class EmployeeRestController {
 		var employee = employeeService.findById(id);
 		
 		if(employee == null) {
-			throw new RuntimeException("Employee id not found " + id);
+			throw new RuntimeException("as Employee id not found " + id);
 		}
 		return employee;
 	}
