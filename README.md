@@ -1,5 +1,7 @@
 # Spring development Process
 
+more information: https://spring.io/guides
+
 1. Configure Spring Beans
 2. Create Spring Container
 3. Retrieve Beans from Spring Container
@@ -561,3 +563,20 @@ like magic crud operations are generated. Eliminate boilerplate code
 ## Rest
 -
 - *spring data rest* (generate automatically, no need to implement EmployeeDAO)
+
+## Thymeleaf
+
+```java
+@GetMapping("/list")
+	public String listEmployees(Model theModel) {
+		
+		// add to the spring model
+		theModel.addAttribute("employees", theEmployees);
+		
+		return "list-employees";
+	}
+```
+
+model, goes to 
+
+
