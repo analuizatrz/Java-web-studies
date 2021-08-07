@@ -558,4 +558,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 like magic crud operations are generated. Eliminate boilerplate code
 
+## Rest
+-
 - *spring data rest* (generate automatically, no need to implement EmployeeDAO)
